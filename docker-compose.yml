@@ -1,7 +1,8 @@
-version: '3.8'
+version: '3'
 
 x-spark-common: &spark-common
-  image: bitnami/spark:latest
+  image: bitnami/spark:3.3.0
+  platform: linux/amd64
   volumes:
     - ./jobs:/opt/bitnami/spark/jobs
   command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
@@ -32,7 +33,6 @@ services:
       retries: 5
     networks:
       - datamasterylab
-
   broker:
     image: confluentinc/cp-server:7.4.0
     hostname: broker
@@ -49,7 +49,7 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
-      KAFKA_OFFSET_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
@@ -63,15 +63,15 @@ services:
       CONFLUENT_METRICS_ENABLE: 'false'
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
     healthcheck:
-      test: ['CMD', 'bash', '-c', "nc -z localhost 9092"]
+      test: [ 'CMD', 'bash', '-c', "nc -z localhost 9092" ]
       interval: 10s
       timeout: 5s
-      retries: 5 
+      retries: 5
     networks:
       - datamasterylab
-
   spark-master:
-    image: bitnami/spark:latest
+    image: bitnami/spark:3.3.0
+    platform: linux/amd64
     volumes:
       - ./jobs:/opt/bitnami/spark/jobs
     command: bin/spark-class org.apache.spark.deploy.master.Master
@@ -80,15 +80,67 @@ services:
       - "7077:7077"
     networks:
       - datamasterylab
-    
   spark-worker-1:
     <<: *spark-common
-
   spark-worker-2:
     <<: *spark-common
-
+#  spark-worker-3:
+#    <<: *spark-common
+#  spark-worker-4:
+#    <<: *spark-common
 networks:
   datamasterylab:
+
+
+
+
+    
+
+
+
+    
+
+
+    
+
+
+
+    
+
+
+
+
+    
+
+
+
+    
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+    
+
+
+
+    
+
 
 
 
