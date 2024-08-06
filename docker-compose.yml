@@ -1,7 +1,7 @@
 version: '3'
 
 x-spark-common: &spark-common
-  image: bitnami/spark:3.3.0
+  image: bitnami/spark:3.4.3
   platform: linux/amd64
   volumes:
     - ./jobs:/opt/bitnami/spark/jobs
@@ -70,7 +70,7 @@ services:
     networks:
       - datamasterylab
   spark-master:
-    image: bitnami/spark:3.3.0
+    image: bitnami/spark:3.4.3
     platform: linux/amd64
     volumes:
       - ./jobs:/opt/bitnami/spark/jobs
