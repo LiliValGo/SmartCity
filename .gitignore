@@ -186,3 +186,5 @@ pip-delete-this-directory.txt
 # Archivos de configuración de herramientas específicas (si las usas)
 ipynb_checkpoints/
 bin/
+LICENSE.txt
+pyvenv.cfg
