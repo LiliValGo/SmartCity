@@ -11,3 +11,19 @@ This architecture leverages Docker containers to encapsulate Spark, Kafka, and Z
   3. **Spark Streaming:** Spark processes and stores data streams, using schemas to parse each data type.
      
   4. **S3 Storage:** Final data is stored as Parquet files on S3 with checkpoints, supporting historical analysis.
+     
+# Setup and Installation
+## Prerequisites
+  * Docker and Docker Compose
+  * AWS access keys for S3 storage
+  * Python 3.10.7
+    
+## Installation
+1. Clone the repository:
+```
+git clone git@github.com:LiliValGo/SmartCity.git
+cd SmartCity
+```
+2. Docker Setup:
+   
+```docker-compose up -d```
